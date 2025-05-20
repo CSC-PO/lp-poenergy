@@ -357,6 +357,65 @@
                 font-size: 1.25rem;
             }
         }
+
+        img[src="mercado-comp-energy.jpg"] {
+            mix-blend-mode: multiply;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        img[src="mercado-comp-energy.jpg"]:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Scrollbar customizado estilo raio de energia */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #222;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ffc107, #ff9800);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #ff9800, #ffc107);
+        }
+
+        /* Para navegadores que suportam scrollbar-color */
+        * {
+            scrollbar-color: #ffc107 #222;
+            scrollbar-width: thin;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        #back-to-top:hover {
+            background-color: #e0a800;
+        }
     </style>
 </head>
 
@@ -440,9 +499,18 @@
         </div>
     </section>
 
+    <section id="mercado-comp-energy" class="py-5">
+        <div class="container text-center">
+            <h2>Mercado Cativo vs Mercado Livre</h2>
+            <p>O mercado cativo é aquele em que o consumidor não tem liberdade de escolha do fornecedor de energia. Já
+                no mercado livre, o consumidor pode escolher seu fornecedor e negociar preços e condições.</p>
+            <img src="mercado-comp-energy.jpg" alt="Mercado Competitivo de Energia" class="img-fluid mt-4">
+        </div>
+    </section>
+
     <section class="construction">
         <h2>Página em Construção</h2>
-        <p>Estamos trabalhando para trazer o melhor conteúdo para você. Entre em contato conosco pelo email <a
+        <p>Estamos trabalhando para trazer o melhor conteúdo para você. Entre em contato conosco pelo e-mail <a
                 href="mailto:contato@poenergy.com.br">contato@poenergy.com.br</a>.</p>
     </section>
     <footer>
@@ -450,8 +518,27 @@
                 href="mailto:contato@poenergy.com.br">contato@poenergy.com.br</a></p>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top">&uarr;</button>
+
     <script src="assets1/js/jquery.min.js"></script>
     <script src="assets1/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+
+        backToTopButton.onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
 </body>
 
 </html>
