@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO Energy</title>
+    <link rel="stylesheet" href="assets1/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets1/css/style.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('29ebcb0644f6441bedc8f9658ff1c7f8421f273d.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        header a {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            background: #ffc107;
+            color: black;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+
+        header a:hover {
+            background: #e0a800;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #222;
+            font-weight: 700;
+            position: relative;
+        }
+
+        section h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ffc107;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        #portfolio h2:after {
+            background: linear-gradient(to right, #ffc107, #ff9800);
+            width: 100px;
+            height: 5px;
+        }
+
+        .construction {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .bg-warning {
+            background-color: #ffc107 !important;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .bg-warning {
+            transform: scale(1.05);
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+        }
+
+        /* Estilos para a seção de serviços */
+        .service-item {
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-item:hover {
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-7px);
+        }
+
+        .service-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ffc107, #ff9800);
+            transition: height 0.3s ease;
+            opacity: 0;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .service-item:hover::after {
+            height: 4px;
+            opacity: 1;
+        }
+
+        .service-item .icon-container {
+            background-color: #ffc107;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+            position: relative;
+            margin: 0 auto 20px auto;
+            width: 80px;
+            height: 80px;
+        }
+
+        .service-item:hover .icon-container {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 6px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .service-item .icon-container i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+        }
+
+        .service-item h4 {
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .service-item:hover h4 {
+            color: #ffc107;
+        }
+
+        .service-item p {
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .service-item:hover p {
+            color: #444 !important;
+        }
+
+        /* Melhorias de responsividade */
+        /* Responsividade para os cards */
+        @media (min-width: 1200px) {
+
+            /* Extra large screens - 4 cards per row */
+            .service-item {
+                padding: 30px 20px;
+            }
+
+            .service-item h4 {
+                font-size: 1.2rem;
+            }
+
+            .service-item p {
+                font-size: 0.9rem;
+            }
+
+            .service-item .icon-container {
+                width: 80px;
+                height: 80px;
+            }
+
+            .service-item .icon-container i {
+                font-size: 32px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+
+            /* Large screens - 4 cards per row, smaller size */
+            .service-item {
+                padding: 25px 15px;
+            }
+
+            .service-item h4 {
+                font-size: 1.1rem;
+            }
+
+            .service-item p {
+                font-size: 0.85rem;
+            }
+
+            .service-item .icon-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .service-item .icon-container i {
+                font-size: 28px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+
+            /* Medium screens - 2 cards per row */
+            .service-item {
+                padding: 30px 20px;
+                margin-bottom: 20px;
+            }
+
+            .service-item h4 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+
+            .service-item p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            /* Small screens - 1 card per row */
+            .service-item {
+                padding: 35px 25px;
+                margin-bottom: 25px;
+                height: auto;
+            }
+
+            .service-item .icon-container {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 20px;
+            }
+
+            .service-item .icon-container i {
+                font-size: 32px;
+            }
+
+            .service-item h4 {
+                font-size: 1.35rem;
+                margin-bottom: 15px;
+            }
+
+            .service-item p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
+
+        @media (max-width: 575px) {
+
+            /* Extra small screens */
+            .service-item {
+                padding: 30px 20px;
+            }
+
+            .service-item .icon-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .service-item .icon-container i {
+                font-size: 28px;
+            }
+
+            .service-item h4 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="po_energy_logo.png.webp" alt="PO Energy Logo" class="mb-4">
+        <h1>Economize até 30% na conta de energia da sua empresa</h1>
+        <p>Soluções inovadoras para o mercado de energia solar e livre.</p>
+        <a class="text-decoration-none" href="https://www.instagram.com/poenergylivre/" target="_blank"><i class="fa fa-instagram"></i> Saiba Mais</a>
+    </header>
+    <section id="quem-somos">
+        <div class="container">
+            <h2>Quem Somos</h2>
+            <p>A PO Energy, empresa das Organizações PaulOOctavio, vem inovando no mercado de energia solar. Criada em
+                dezembro de 2019, ela aproveita uma fonte inesgotável de energia: o imenso potencial solar de Brasília.
+                A energia fotovoltaica é corretamente sustentável, benéfica para o meio ambiente e reduz o impacto
+                produzido por usinas hidrelétricas e de carvão, sem os riscos das plantas radioativas.</p>
+        </div>
+    </section>
+
+
+    <section id="portfolio" class="py-5 bg-light position-relative">
+        <div class="position-absolute"
+            style="top: 0; right: 0; width: 150px; height: 150px; background-color: rgba(255, 193, 7, 0.1); border-radius: 0 0 0 100%;">
+        </div>
+        <div class="position-absolute"
+            style="bottom: 0; left: 0; width: 120px; height: 120px; background-color: rgba(255, 193, 7, 0.1); border-radius: 0 100% 0 0;">
+        </div>
+        <div class="container py-4 position-relative">
+            <h2 class="text-center mb-4">Portfólio de Serviços da PO ENERGY</h2>
+            <p class="text-center text-muted mb-5">Soluções completas e personalizadas para o mercado de energia</p>
+            <div class="row gy-4 gx-4">
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="service-item">
+                        <div class="icon-container mx-auto">
+                            <i class="fa fa-bolt text-dark"></i>
+                        </div>
+                        <h4 class="fw-bold">Carregadores para Veículos Elétricos</h4>
+                        <p class="text-muted">Fornecemos, instalamos e monitoramos carregadores de última geração para
+                            veículos elétricos, com serviço completo de operação e manutenção.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="service-item">
+                        <div class="icon-container mx-auto">
+                            <i class="fa fa-handshake-o text-dark"></i>
+                        </div>
+                        <h4 class="fw-bold">Mercado Livre de Energia</h4>
+                        <p class="text-muted">Desenvolvemos estratégias personalizadas para gestão e comercialização de
+                            energia no mercado livre, garantindo economia e eficiência.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="service-item">
+                        <div class="icon-container mx-auto">
+                            <i class="fa fa-dollar text-dark"></i>
+                        </div>
+                        <h4 class="fw-bold">Gestão Total no Mercado Livre</h4>
+                        <p class="text-muted">Oferecemos serviços completos de migração ao mercado livre de energia e
+                            representação junto à CCEE, simplificando todo o processo.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="service-item">
+                        <div class="icon-container mx-auto">
+                            <i class="fa fa-leaf text-dark"></i>
+                        </div>
+                        <h4 class="fw-bold">Comercialização de Energia</h4>
+                        <p class="text-muted">Contratos flexíveis e personalizados para compra e venda de energia, com
+                            opções adaptadas às necessidades específicas do seu negócio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="construction">
+        <h2>Página em Construção</h2>
+        <p>Estamos trabalhando para trazer o melhor conteúdo para você. Entre em contato conosco pelo email <a
+                href="mailto:contato@poenergy.com.br">contato@poenergy.com.br</a>.</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 PO Energy. Todos os direitos reservados. | <a
+                href="mailto:contato@poenergy.com.br">contato@poenergy.com.br</a></p>
+    </footer>
+
+    <script src="assets1/js/jquery.min.js"></script>
+    <script src="assets1/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
